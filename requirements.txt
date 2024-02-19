@@ -1,1 +1,5 @@
 streamlit
+chromadb
+langchain
+langchain-google-vertexai
+pypdf
