@@ -62,18 +62,31 @@ embed_config = {
     "project": "YOUR PROJECT ID HERE",
     "location": "us-central1"
 }
+####### YOUR CODE HERE #######
+#
+# Initalize the EmbeddingClient with embed config
+#
+# Initalize DocumentProcessor and Ingest Documents
+#
+####### YOUR CODE HERE #######
 
 with st.form("Load Data to Chroma"):
     st.subheader("Quiz Builder")
     st.write("Select PDFs for Ingestion, the topic for the quiz, and click Generate!")
     
     ####### YOUR CODE HERE #######
+    # Use streamlit widgets to capture the user's input
+    # for the quiz topic and the desired number of questions
+    ####### YOUR CODE HERE #######
     
     submitted = st.form_submit_button("Generate a Quiz!")
     if submitted:
-        # chroma_creator.create_chroma_collection()
+        ####### YOUR CODE HERE #######
+        # Use the create_chroma_collection() method to create a
+        # Chroma collection from the processed documents
+        ####### YOUR CODE HERE #######
             
-        # Query the collection after creation
+        # Uncomment the following lines to test the query_chroma_collection() method
         # query = st.text_input("Enter your query")
         # if query:
             # chroma_creator.query_chroma_collection(query)
