@@ -7,6 +7,7 @@ from tasks.task_4.task_4 import EmbeddingClient
 
 
 # Import Task libraries
+from langchain_core.documents import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 
@@ -66,7 +67,7 @@ class ChromaCollectionCreator:
         else:
             st.error("Failed to create Chroma Collection!", icon="🚨")
     
-    def query_chroma_collection(self, query):
+    def query_chroma_collection(self, query) -> Document:
         """
         Queries the created Chroma collection for documents similar to the query.
         :param query: The query string to search for in the Chroma collection.
@@ -76,7 +77,7 @@ class ChromaCollectionCreator:
         if self.db:
             docs = self.db.similarity_search_with_relevance_scores(query)
             if docs:
-                st.write(docs[0])
+                return docs[0]
             else:
                 st.error("No matching documents found!", icon="🚨")
         else:
@@ -102,8 +103,3 @@ if __name__ == "__main__":
         submitted = st.form_submit_button("Submit")
         if submitted:
             chroma_creator.create_chroma_collection()
-            
-            # Query the collection after creation
-            query = st.text_input("Enter your query")
-            if query:
-                chroma_creator.query_chroma_collection(query)
