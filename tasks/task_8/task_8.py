@@ -3,9 +3,9 @@ import os
 import sys
 import json
 sys.path.append(os.path.abspath('../../'))
-from tasks.task_3.task_3_solution import DocumentProcessor
-from tasks.task_4.task_4_solution import EmbeddingClient
-from tasks.task_5.task_5_solution import ChromaCollectionCreator
+from tasks.task_3.task_3 import DocumentProcessor
+from tasks.task_4.task_4 import EmbeddingClient
+from tasks.task_5.task_5 import ChromaCollectionCreator
 
 from langchain_core.prompts import PromptTemplate
 from langchain_google_vertexai import VertexAI
