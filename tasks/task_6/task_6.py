@@ -9,85 +9,78 @@ from tasks.task_5.task_5 import ChromaCollectionCreator
 f"""
 Task: Build a Quiz Builder with Streamlit and LangChain
 
-In this task, you will combine your knowledge from previous tasks to create a "Quiz Builder" application using Streamlit. 
-This application will allow users to upload documents, specify a topic for their quiz, choose the number of questions, 
-and generate a quiz based on the content of the uploaded documents.
+Overview:
+In this task, you will leverage your skills acquired from previous tasks to create a "Quiz Builder" application utilizing Streamlit. This interactive application enables users to upload documents, designate a quiz topic, select a number of questions, and subsequently generate a quiz based on the uploaded document contents.
 
-Components to Use:
-- DocumentProcessor: Class from Task 3 for processing uploaded PDF documents.
-- EmbeddingClient: Class from Task 4 for embedding queries.
-- ChromaCollectionCreator: Class for creating a Chroma collection from processed documents.
+Components to Integrate:
+- DocumentProcessor: A class developed in Task 3 for processing uploaded PDF documents.
+- EmbeddingClient: A class from Task 4 dedicated to embedding queries.
+- ChromaCollectionCreator: A class from Task 5 responsible for creating a Chroma collection derived from the processed documents.
 
-Steps:
-    1. Initialize the `DocumentProcessor` instance and call `ingest_documents()` to process uploaded PDF documents.
+Step-by-Step Instructions:
+1. Begin by initializing an instance of the `DocumentProcessor` and invoke the `ingest_documents()` method to process the uploaded PDF documents.
 
-    2. Configure the `EmbeddingClient` with the necessary model, project, and location information.
+2. Configure and initialize the `EmbeddingClient` with the specified model, project, and location details as provided in the `embed_config`.
 
-    3. Create an instance of `ChromaCollectionCreator` using the `DocumentProcessor` and `EmbeddingClient` instances.
+3. Instantiate the `ChromaCollectionCreator` using the previously initialized `DocumentProcessor` and `EmbeddingClient`.
 
-    4. Use Streamlit to create a form where users can input the topic for the quiz and select the number of questions with a slider.
+4. Utilize Streamlit to construct a form. This form should prompt users to input the quiz's topic and select the desired number of questions via a slider component.
 
-    5. Upon form submission, use the `ChromaCollectionCreator` to create a Chroma collection from the processed documents.
+5. Following the form submission, employ the `ChromaCollectionCreator` to forge a Chroma collection from the documents processed earlier.
 
-    6. Allow the user to enter a query related to the topic for generative quiz questions. Use the Chroma collection to find relevant information based on the query.
+6. Enable users to input a query pertinent to the quiz topic. Utilize the generated Chroma collection to extract relevant information corresponding to the query, which aids in quiz question generation.
 
-Instructions:
-    - Use Streamlit's `st.header`, `st.subheader`, `st.text_input`, and `st.slider` to create an interactive form. Capture the user's input for the quiz topic and the desired number of questions.
+Implementation Guidance:
+- Deploy Streamlit's widgets such as `st.header`, `st.subheader`, `st.text_input`, and `st.slider` to craft an engaging form. This form should accurately capture the user's inputs for both the quiz topic and the number of questions desired.
 
-    - After form submission, ensure that the uploaded documents are processed, and a Chroma collection is created. Provide feedback to the user about the success or failure of these operations.
+- Post form submission, verify that the documents have been processed and that a Chroma collection has been successfully created. The build-in methods will communicate the outcome of these operations to the user through appropriate feedback.
 
-    - Finally, prompt the user to enter a query for generating quiz questions. Use the created Chroma collection to respond to the query, demonstrating how the collection can be used to retrieve information relevant to the quiz topic.
-
-Example Code Snippets:
-```python
-# Initializing components
-processor = DocumentProcessor()
-embed_client = EmbeddingClient(**embed_config)
-chroma_creator = ChromaCollectionCreator(processor, embed_client)
-
-# Streamlit form for quiz builder
-with st.form("Load Data to Chroma"):
-    topic = st.text_input("Topic for Generative Quiz", placeholder="Enter the topic of the document")
-    questions = st.slider("Number of Questions", min_value=1, max_value=10, value=5)
-    submitted = st.form_submit_button("Generate a Quiz!")
-    if submitted:
-        # Process documents, create Chroma collection, and generate quiz
+- Lastly, introduce a query input field post-Chroma collection creation. This field will gather user queries for generating quiz questions, showcasing the utility of the Chroma collection in sourcing information relevant to the quiz topic.
 
 """
 
-st.header("Quizzify")
+if __name__ == "__main__":
+    st.header("Quizzify")
 
-embed_config = {
-    "model_name": "textembedding-gecko@003",
-    "project": "YOUR PROJECT ID HERE",
-    "location": "us-central1"
-}
-####### YOUR CODE HERE #######
-#
-# Initalize the EmbeddingClient with embed config
-#
-# Initalize DocumentProcessor and Ingest Documents
-#
-####### YOUR CODE HERE #######
+    # Configuration for EmbeddingClient
+    embed_config = {
+        "model_name": "textembedding-gecko@003",
+        "project": "YOUR PROJECT ID HERE",
+        "location": "us-central1"
+    }
+    
+    screen = st.empty() # Screen 1, ingest documents
+    with screen.container():
+        st.header("Quizzify")
+        ####### YOUR CODE HERE #######
+        # Initalize DocumentProcessor and Ingest Documents from Task 3
+        # Initalize the EmbeddingClient from Task 4 with embed config
+        # Initialize the ChromaCollectionCreator from Task 5
+        ####### YOUR CODE HERE #######
 
-with st.form("Load Data to Chroma"):
-    st.subheader("Quiz Builder")
-    st.write("Select PDFs for Ingestion, the topic for the quiz, and click Generate!")
-    
-    ####### YOUR CODE HERE #######
-    # Use streamlit widgets to capture the user's input
-    # for the quiz topic and the desired number of questions
-    ####### YOUR CODE HERE #######
-    
-    submitted = st.form_submit_button("Generate a Quiz!")
-    if submitted:
-        ####### YOUR CODE HERE #######
-        # Use the create_chroma_collection() method to create a
-        # Chroma collection from the processed documents
-        ####### YOUR CODE HERE #######
+        with st.form("Load Data to Chroma"):
+            st.subheader("Quiz Builder")
+            st.write("Select PDFs for Ingestion, the topic for the quiz, and click Generate!")
             
-        # Uncomment the following lines to test the query_chroma_collection() method
-        # query = st.text_input("Enter your query")
-        # if query:
-            # chroma_creator.query_chroma_collection(query)
-        pass
+            ####### YOUR CODE HERE #######
+            # Use streamlit widgets to capture the user's input
+            # for the quiz topic and the desired number of questions
+            ####### YOUR CODE HERE #######
+            
+            document = None
+            
+            submitted = st.form_submit_button("Generate a Quiz!")
+            if submitted:
+                ####### YOUR CODE HERE #######
+                # Use the create_chroma_collection() method to create a
+                # Chroma collection from the processed documents
+                ####### YOUR CODE HERE #######
+                    
+                # Uncomment the following lines to test the query_chroma_collection() method
+                document = chroma_creator.query_chroma_collection(topic_input) 
+                
+    if document:
+        screen.empty() # Screen 2
+        with st.container():
+            st.header("Generated Quiz Question: ")
+            st.write(document)
