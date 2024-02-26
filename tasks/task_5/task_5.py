@@ -54,12 +54,16 @@ class ChromaCollectionCreator:
             return
 
         # Step 2: Split documents into text chunks
+        # Use a TextSplitter from Langchain to split the documents into smaller text chunks
+        # https://python.langchain.com/docs/modules/data_connection/document_transformers/character_text_splitter
         # [Your code here for splitting documents]
         
         if texts is not None:
             st.success(f"Successfully split pages to {len(texts)} documents!", icon="✅")
 
         # Step 3: Create the Chroma Collection
+        # https://docs.trychroma.com/
+        # Create a Chroma in-memory client using the text chunks and the embeddings model
         # [Your code here for creating Chroma collection]
         
         if self.db:

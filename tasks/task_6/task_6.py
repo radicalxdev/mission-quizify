@@ -53,9 +53,9 @@ if __name__ == "__main__":
     with screen.container():
         st.header("Quizzify")
         ####### YOUR CODE HERE #######
-        # Initalize DocumentProcessor and Ingest Documents from Task 3
-        # Initalize the EmbeddingClient from Task 4 with embed config
-        # Initialize the ChromaCollectionCreator from Task 5
+        # 1) Initalize DocumentProcessor and Ingest Documents from Task 3
+        # 2) Initalize the EmbeddingClient from Task 4 with embed config
+        # 3) Initialize the ChromaCollectionCreator from Task 5
         ####### YOUR CODE HERE #######
 
         with st.form("Load Data to Chroma"):
@@ -63,8 +63,8 @@ if __name__ == "__main__":
             st.write("Select PDFs for Ingestion, the topic for the quiz, and click Generate!")
             
             ####### YOUR CODE HERE #######
-            # Use streamlit widgets to capture the user's input
-            # for the quiz topic and the desired number of questions
+            # 4) Use streamlit widgets to capture the user's input
+            # 4) for the quiz topic and the desired number of questions
             ####### YOUR CODE HERE #######
             
             document = None
@@ -72,15 +72,14 @@ if __name__ == "__main__":
             submitted = st.form_submit_button("Generate a Quiz!")
             if submitted:
                 ####### YOUR CODE HERE #######
-                # Use the create_chroma_collection() method to create a
-                # Chroma collection from the processed documents
+                # 5) Use the create_chroma_collection() method to create a Chroma collection from the processed documents
                 ####### YOUR CODE HERE #######
                     
                 # Uncomment the following lines to test the query_chroma_collection() method
-                document = chroma_creator.query_chroma_collection(topic_input) 
+                # document = chroma_creator.query_chroma_collection(topic_input) 
                 
     if document:
         screen.empty() # Screen 2
         with st.container():
-            st.header("Generated Quiz Question: ")
+            st.header("Query Chroma for Topic, top Document: ")
             st.write(document)
