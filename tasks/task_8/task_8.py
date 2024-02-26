@@ -31,7 +31,7 @@ class QuizGenerator:
 
         self.vectorstore = vectorstore
         self.llm = None
-        self.question_bank = [] # added question bank to store questions
+        self.question_bank = [] # Initialize the question bank to store questions
         self.system_template = """
             You are a subject matter expert on the topic: {topic}
             
@@ -125,7 +125,7 @@ class QuizGenerator:
 
         for _ in range(self.num_questions):
             ##### YOUR CODE HERE #####
-            question_str = # Use method to generate question
+            question_str = # Use class method to generate question
             
             ##### YOUR CODE HERE #####
             try:
