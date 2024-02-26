@@ -71,7 +71,7 @@ if __name__ == "__main__":
     
     embed_config = {
         "model_name": "textembedding-gecko@003",
-        "project": "sample-gemini",
+        "project": "YOUR-PROJECT-ID-HERE",
         "location": "us-central1"
     }
     
@@ -81,7 +81,7 @@ if __name__ == "__main__":
         processor = DocumentProcessor()
         processor.ingest_documents()
     
-        embed_client = EmbeddingClient(**embed_config) # Initialize from Task 4
+        embed_client = EmbeddingClient(**embed_config) 
     
         chroma_creator = ChromaCollectionCreator(processor, embed_client)
     
