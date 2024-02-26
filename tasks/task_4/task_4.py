@@ -31,6 +31,8 @@ class EmbeddingClient:
     
     def __init__(self, model_name, project, location):
         # Initialize the VertexAIEmbeddings client with the given parameters
+        # Read about the VertexAIEmbeddings wrapper from Langchain here
+        # https://python.langchain.com/docs/integrations/text_embedding/google_generative_ai
         self.client = VertexAIEmbeddings(
             #### YOUR CODE HERE ####
         )
