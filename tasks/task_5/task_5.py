@@ -92,9 +92,7 @@ if __name__ == "__main__":
     processor.ingest_documents()
     
     embed_config = {
-        "model_name": "textembedding-gecko@003",
-        "project": "YOUR PROJECT ID HERE",
-        "location": "us-central1"
+        "model_name": "models/embedding-001"
     }
     
     embed_client = EmbeddingClient(**embed_config) # Initialize from Task 4

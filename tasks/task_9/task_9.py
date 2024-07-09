@@ -70,9 +70,7 @@ class QuizManager:
 if __name__ == "__main__":
     
     embed_config = {
-        "model_name": "textembedding-gecko@003",
-        "project": "YOUR-PROJECT-ID-HERE",
-        "location": "us-central1"
+        "model_name": "models/embedding-001"
     }
     
     screen = st.empty()

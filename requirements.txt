@@ -1,5 +1,7 @@
 streamlit
 chromadb
 langchain
-langchain-google-vertexai
+langchain-core
+langchain_community
+langchain-google-genai
 pypdf

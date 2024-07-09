@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_google_vertexai import VertexAI
+from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 import os
 import sys
@@ -65,12 +65,12 @@ class QuizGenerator:
         4. Initialize the LLM with the specified parameters to be ready for generating quiz questions.
 
         Implementation:
-        - Use the VertexAI class to create an instance of the LLM with the specified configurations.
+        - Use the GoogleGenerativeAI class to create an instance of the LLM with the specified configurations.
         - Assign the created LLM instance to the 'self.llm' attribute for later use in question generation.
 
         Note: Ensure you have appropriate access or API keys if required by the model or platform.
         """
-        self.llm = VertexAI(
+        self.llm = GoogleGenerativeAI(
             ############# YOUR CODE HERE ############
         )
         
@@ -140,9 +140,7 @@ if __name__ == "__main__":
     
     
     embed_config = {
-        "model_name": "textembedding-gecko@003",
-        "project": "YOUR-PROJECT-ID-HERE",
-        "location": "us-central1"
+        "model_name": "models/embedding-001"
     }
     
     screen = st.empty()

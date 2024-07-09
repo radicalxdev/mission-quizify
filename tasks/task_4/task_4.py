@@ -1,6 +1,6 @@
 # embedding_client.py
 
-from langchain_google_vertexai import VertexAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 class EmbeddingClient:
     """
@@ -8,13 +8,13 @@ class EmbeddingClient:
 
     The EmbeddingClient class should be capable of initializing an embedding client with specific configurations
     for model name, project, and location. Your task is to implement the __init__ method based on the provided
-    parameters. This setup will allow the class to utilize Google Cloud's VertexAIEmbeddings for processing text queries.
+    parameters. This setup will allow the class to utilize Google Cloud's GoogleGenerativeAIEmbeddings for processing text queries.
 
     Steps:
     1. Implement the __init__ method to accept 'model_name', 'project', and 'location' parameters.
-       These parameters are crucial for setting up the connection to the VertexAIEmbeddings service.
+       These parameters are crucial for setting up the connection to the GoogleGenerativeAIEmbeddings service.
 
-    2. Within the __init__ method, initialize the 'self.client' attribute as an instance of VertexAIEmbeddings
+    2. Within the __init__ method, initialize the 'self.client' attribute as an instance of GoogleGenerativeAIEmbeddings
        using the provided parameters. This attribute will be used to embed queries.
 
     Parameters:
@@ -23,17 +23,17 @@ class EmbeddingClient:
     - location: The location of the Google Cloud project, such as 'us-central1'.
 
     Instructions:
-    - Carefully initialize the 'self.client' with VertexAIEmbeddings in the __init__ method using the parameters.
+    - Carefully initialize the 'self.client' with GoogleGenerativeAIEmbeddings in the __init__ method using the parameters.
     - Pay attention to how each parameter is used to configure the embedding client.
 
     Note: The 'embed_query' method has been provided for you. Focus on correctly initializing the class.
     """
     
-    def __init__(self, model_name, project, location):
-        # Initialize the VertexAIEmbeddings client with the given parameters
-        # Read about the VertexAIEmbeddings wrapper from Langchain here
+    def __init__(self, model_name):
+        # Initialize the GoogleGenerativeAIEmbeddings client with the given parameters
+        # Read about the GoogleGenerativeAIEmbeddings wrapper from Langchain here
         # https://python.langchain.com/docs/integrations/text_embedding/google_generative_ai
-        self.client = VertexAIEmbeddings(
+        self.client = GoogleGenerativeAIEmbeddings(
             #### YOUR CODE HERE ####
         )
         
@@ -61,11 +61,9 @@ class EmbeddingClient:
             return None
 
 if __name__ == "__main__":
-    model_name = "textembedding-gecko@003"
-    project = "YOUR PROJECT ID HERE"
-    location = "us-central1"
+    model_name = "models/embedding-001"
 
-    embedding_client = EmbeddingClient(model_name, project, location)
+    embedding_client = EmbeddingClient(model_name)
     vectors = embedding_client.embed_query("Hello World!")
     if vectors:
         print(vectors)

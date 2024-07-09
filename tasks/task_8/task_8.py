@@ -8,7 +8,7 @@ from tasks.task_4.task_4 import EmbeddingClient
 from tasks.task_5.task_5 import ChromaCollectionCreator
 
 from langchain_core.prompts import PromptTemplate
-from langchain_google_vertexai import VertexAI
+from langchain_google_genai import GoogleGenerativeAI
 
 class QuizGenerator:
     def __init__(self, topic=None, num_questions=1, vectorstore=None):
@@ -66,8 +66,8 @@ class QuizGenerator:
 
         :return: An instance or configuration for the LLM.
         """
-        self.llm = VertexAI(
-            model_name = "gemini-pro",
+        self.llm = GoogleGenerativeAI(
+            model = "gemini-1.5-pro",
             temperature = 0.8, # Increased for less deterministic questions 
             max_output_tokens = 500
         )
@@ -177,9 +177,7 @@ class QuizGenerator:
 if __name__ == "__main__":
     
     embed_config = {
-        "model_name": "textembedding-gecko@003",
-        "project": "YOUR-PROJECT-ID-HERE",
-        "location": "us-central1"
+        "model_name": "models/embedding-001"
     }
     
     screen = st.empty()
